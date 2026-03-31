@@ -1,0 +1,10 @@
+{
+  "supporters": 47,
+  "totalRaised": 58,
+  "topDonors": [
+    { "name": "Anonymous", "amount": 50, "flag": "🌍" },
+    { "name": "Alex M.",   "amount": 25, "flag": "🇫🇷" },
+    { "name": "Sarah K.",  "amount": 15, "flag": "🇺🇸" },
+    { "name": "Chris L.",  "amount": 10, "flag": "🇬🇧" }
+  ]
+}
