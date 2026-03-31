@@ -1769,7 +1769,7 @@
 
       // ── Starfield ─────────────────────────────────────────────────
       const isMobile    = window.innerWidth <= 600;
-      const STAR_COUNT  = isMobile ? 1800 : 5000;
+      const STAR_COUNT  = isMobile ? 2800 : 8000;
       const sPos   = new Float32Array(STAR_COUNT * 3);
       const sSize  = new Float32Array(STAR_COUNT);
       const sColor = new Float32Array(STAR_COUNT * 3);
@@ -1825,7 +1825,7 @@
             if (d > 1.0) discard;
             float core = exp(-d * 9.0);
             float halo = exp(-d * 3.2) * 0.35;
-            gl_FragColor = vec4(vColor, (core + halo) * vTwinkle * 1.8);
+            gl_FragColor = vec4(vColor, (core + halo) * vTwinkle * 2.8);
           }
         `,
         transparent: true,
