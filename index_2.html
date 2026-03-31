@@ -800,8 +800,15 @@
         font-size: 0.9rem;
         justify-content: center;
       }
+      /* Send $3 centré seul sur sa ligne */
+      .btn-amount:nth-child(3) {
+        grid-column: 1 / -1;
+        width: fit-content;
+        min-width: 150px;
+        margin: 0 auto;
+      }
       .btn-amount.custom-btn {
-        grid-column: 1 / -1; /* pleine largeur */
+        grid-column: 1 / -1;
       }
       .btn-main {
         width: 100%;
