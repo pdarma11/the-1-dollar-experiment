@@ -874,8 +874,14 @@
         gap: 0.6rem;
       }
 
-      /* Globe canvas plus petit sur mobile pour perf */
-      #globe-canvas { opacity: 0.32; }
+      /* Globe + luminosité sur mobile */
+      #globe-canvas { opacity: 0.62; }
+      body::before {
+        background:
+          radial-gradient(ellipse 120% 80% at 20% 30%, rgba(15,30,80,0.5) 0%, transparent 60%),
+          radial-gradient(ellipse 100% 70% at 80% 70%, rgba(40,8,65,0.4) 0%, transparent 55%),
+          #060a12;
+      }
     }
 
     /* ── Très petit (375px et moins) ── */
