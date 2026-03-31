@@ -757,18 +757,133 @@
     }
     .share-copied.show { opacity: 1; }
 
-    /* ── Responsive ── */
+    /* ── Responsive — Tablet ── */
+    @media (max-width: 860px) {
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .share-grid { gap: 0.6rem; }
+    }
+
+    /* ── Responsive — Mobile ── */
     @media (max-width: 600px) {
-      nav { padding: 1rem 1.2rem; }
-      h1 { font-size: 2.6rem; }
-      .btn-group { gap: 0.55rem; }
-      .btn-amount { padding: 0.72rem 1.35rem; font-size: 0.92rem; }
-      .counter-wrap { padding: 2rem 2.8rem; }
-      .counter-num { font-size: 3.2rem; }
-      .pot-wrap { padding: 1.5rem 2rem; }
-      .pot-amount { font-size: 2.2rem; }
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
-      .section-wrap { padding: 4rem 1.25rem; }
+
+      /* Nav */
+      nav {
+        padding: 0.85rem 1rem;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+      }
+      .nav-logo { font-size: 0.9rem; }
+      .nav-tagline {
+        display: none; /* masquée sur mobile, trop étroit */
+      }
+      .nav-cta {
+        font-size: 0.72rem;
+        padding: 0.4rem 0.9rem;
+        white-space: nowrap;
+      }
+
+      /* Hero */
+      #hero { padding: 7rem 1.2rem 4rem; }
+      h1 { font-size: clamp(2rem, 9vw, 2.6rem); letter-spacing: -0.02em; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 2rem; }
+
+      /* Buttons — 2 par ligne */
+      .btn-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+        width: 100%;
+        max-width: 340px;
+      }
+      .btn-amount {
+        padding: 0.78rem 0.5rem;
+        font-size: 0.9rem;
+        justify-content: center;
+      }
+      .btn-amount.custom-btn {
+        grid-column: 1 / -1; /* pleine largeur */
+      }
+      .btn-main {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+        font-size: 0.97rem;
+        padding: 0.95rem 1.5rem;
+      }
+
+      /* Sections */
+      .section-wrap { padding: 3.5rem 1.1rem; }
+      h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+
+      /* Why grid — 1 colonne sur très petit */
+      .why-grid { grid-template-columns: 1fr; }
+      .why-card { padding: 1.4rem; }
+
+      /* Counter */
+      .counter-wrap {
+        padding: 1.8rem 2rem;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .counter-num { font-size: 3rem; }
+
+      /* Pot */
+      .pot-wrap {
+        padding: 1.4rem 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .pot-amount { font-size: 2rem; }
+      .pot-bar-track { width: 100%; }
+
+      /* Top donor */
+      .top-donor-wrap {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 1.2rem;
+        flex-wrap: nowrap;
+      }
+      .top-donor-crown { font-size: 1.5rem; }
+      .top-donor-name  { font-size: 0.95rem; }
+
+      /* Share */
+      .share-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+        width: 100%;
+      }
+      .share-btn {
+        justify-content: center;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 14px;
+      }
+      .share-btn.native {
+        grid-column: 1 / -1;
+      }
+
+      /* QR */
+      .qr-box { padding: 1.5rem 1.2rem; width: 100%; box-sizing: border-box; }
+
+      /* Footer */
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.6rem;
+      }
+
+      /* Globe canvas plus petit sur mobile pour perf */
+      #globe-canvas { opacity: 0.32; }
+    }
+
+    /* ── Très petit (375px et moins) ── */
+    @media (max-width: 375px) {
+      h1 { font-size: 1.85rem; }
+      .btn-group { max-width: 100%; }
+      .btn-main  { max-width: 100%; }
+      .counter-num { font-size: 2.6rem; }
     }
   </style>
 </head>
@@ -1653,7 +1768,8 @@
       earth.add(cityPoints); // child of earth → rotates with the globe
 
       // ── Starfield ─────────────────────────────────────────────────
-      const STAR_COUNT  = 5000;
+      const isMobile    = window.innerWidth <= 600;
+      const STAR_COUNT  = isMobile ? 1800 : 5000;
       const sPos   = new Float32Array(STAR_COUNT * 3);
       const sSize  = new Float32Array(STAR_COUNT);
       const sColor = new Float32Array(STAR_COUNT * 3);
