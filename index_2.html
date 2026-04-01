@@ -1174,7 +1174,7 @@
 
     async function fetchLiveData() {
       try {
-        const res  = await fetch('data.json?t=' + Date.now()); // bust cache
+        const res  = await fetch('/api/stats?t=' + Date.now());
         const data = await res.json();
 
         const newSupporters = data.supporters  ?? LIVE_SUPPORTERS;
